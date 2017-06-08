@@ -1,0 +1,32 @@
+$browser-default-font-size:75;
+
+@function px2rem($px) {
+    @return $px / $browser-default-font-size * 1rem;
+}
+
+@mixin font-dpr($font-size) {
+    font-size: $font-size * 0.5px;
+    [data-dpr="2"] & {
+        font-size: $font-size * 1px;
+    }
+    [data-dpr="3"] & {
+        font-size: $font-size * 1.5px;
+    }
+}
+@mixin border-1px($width){
+    border-width: $width * 0.5px !important;
+    [data-dpr="2"] & {
+        border-width: $width * 1px !important;
+    }
+    [data-dpr="3"] & {
+        border-width: $width * 1.5px !important;
+    }
+}
+
+@mixin bg-image($url){
+    background-image:url($url+"@2x.png");
+    @media (-webkit-min-device-pixel-ratio:3),(min-device-pixel-ratio:3){
+        background-image:url($url+"@3x.png");
+    }
+}
+
