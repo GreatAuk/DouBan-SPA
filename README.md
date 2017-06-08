@@ -1,6 +1,6 @@
-# douban
+# DouBan-SPA
 
-> A Vue.js project
+> The douban application built with vue + vux-cli + vue-router + axios + vux
 
 ## Build Setup
 
@@ -18,4 +18,5 @@ npm run build
 npm run build --report
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+
