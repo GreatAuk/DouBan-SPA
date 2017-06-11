@@ -36,6 +36,23 @@
                     </li>
                 </ul>
             </section>
+            <section class="photos-videos">
+                <p>{{ movie.title }}的预告片和图片({{ movie.photos_count }})</p>
+                <ul>
+                    <li v-for="item in movie.trailers" class="video">
+                        <a :href="`https://m.douban.com/movie/trailer/${item.id}`">
+                          <img src="./../../assets/play-button.png" alt="播放按钮" class="playBtn"
+                          />
+                          <img :src="item.medium" alt="预告片图片" class="photo"/>
+                        </a>
+                    </li>
+                    <li v-for="item in movie.photos">
+                        <a href="javascript:;">
+                            <img :src="`${item.cover}`" class="photo" alt="403 forbidden">
+                        </a>
+                    </li>
+                </ul>
+            </section>
             <section class="comments">
                 <h2 class="title">{{ `${movie.title}的影评(${movie.comments_count})` }}</h2>
                 <comment-item :comment="item" v-for="item in movie.popular_comments" :key="item.id"></comment-item>
@@ -211,6 +228,41 @@
                     background: #f5f5f5;
                     display: block;
                 }
+            }
+        }
+        .photos-videos{
+            margin-bottom:px2rem(40);
+            p{
+                @include font-dpr(30);
+                color:#aaa;
+            }
+            ul{
+                overflow-x:auto;
+                overflow-y:hidden;
+                white-space:nowrap;
+                -webkit-overflow-scrolling: touch;
+                &::-webkit-scrollbar{display:none;}
+            }
+            li{
+                vertical-align:top;
+                display:inline-block;
+                font-size:0;
+                position:relative;
+                margin-right:px2rem(8);
+            }
+            .video{
+                .playBtn{
+                    position:absolute;
+                    left:50%;
+                    top:50%;
+                    transform:translate(-50%,-50%);
+                    width:px2rem(84);
+                    height:px2rem(84);
+                }
+            }
+            .photo{
+                    height:px2rem(240);
+                    width:auto;
             }
         }
         .comments{
