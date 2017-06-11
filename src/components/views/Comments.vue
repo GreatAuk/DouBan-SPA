@@ -2,6 +2,7 @@
    <div class="movie-comments page">
         <v-header/>
         <div v-show="loading" class="total">{{`全部短评(${data.total})`}}</div>
+        <button @click="show">btn</button>
         <section class="comments">
             <comment-item :comment="item" v-for="item in comments" :key="item.id"></comment-item>
             <infinite-loading :on-infinite="onInfinite" spinner="waveDots" ref="infiniteLoading">
@@ -10,7 +11,6 @@
                 </span>
             </infinite-loading>
         </section>
-        <v-footer v-show="!loading"/>
    </div>
 </template>
 
@@ -36,6 +36,9 @@ import Footer from '@/components/common/Footer.vue'
             'v-footer':Footer
         },
         methods:{
+            show(){
+                alert(111);
+            },
             onInfinite(){
                 this.$http({
                     method: 'get',
