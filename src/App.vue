@@ -24,6 +24,9 @@
   .page{
     padding-top:px2rem(50*2);
   }
+  [v-cloak]{
+    display:none;
+  }
   .loading{
     position:fixed;
     top:50%;
