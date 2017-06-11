@@ -6,7 +6,7 @@
             <section class="movie-info">
                 <div class="left">
                     <div v-if="movie.rating" class="rating-wrap">
-                        <rater  v-model="movie.rating.average" slot="value" disabled class="rater"></rater>
+                        <rater  v-model="rating" slot="value" disabled class="rater"></rater>
                         <span>{{movie.rating.average?movie.rating.average:'暂无评价'}}</span>
                         <span>{{movie.ratings_count}}人评价</span>
                     </div>
@@ -31,10 +31,15 @@
             <section class="tags">
                 <p>查看更多豆瓣高分电影电视剧</p>
                 <ul>
-                    <li v-for="item in movie.genres">
+                    <li v-for="item in movie.tags">
                         <router-link :to="`/search-result/${item}`">{{item}}</router-link>
                     </li>
                 </ul>
+            </section>
+            <section class="comments">
+                <h2 class="title">{{ `${movie.title}的影评(${movie.comments_count})` }}</h2>
+                <comment-item :comment="item" v-for="item in movie.popular_comments" :key="item.id"></comment-item>
+                <router-link class="see-more" :to="{name:'movie-comments',params:{movieId:movie.id}}">查看全部短评</router-link>
             </section>
         </div>
         <spinner v-show="loading" :type="'lines'" class="loading"></spinner>
@@ -44,34 +49,40 @@
 
 <script>
     import {Spinner,Rater} from 'vux'
+    import CommentItem from '@/components/movie/Comment-item.vue'
     import Header from '@/components/common/Header.vue'
     import Footer from '@/components/common/Footer.vue'
     export default{
         data(){
             return {
                 loading:true,
-                movie:{}
+                movie:null,
+                test:''
             }
         },
         components:{
             Spinner,
             Rater,
+            'comment-item':CommentItem,
             'v-header':Header,
             'v-footer':Footer
         },
         computed:{
-            // infos() {
-            //       const { directors, countries, year, genres, casts } = this.movie;
-            //       const array = [];
-            //       Array.prototype.push
-            //         .call(array,
-            //           genres.reduce((previous, current) => `${previous} / ${current}`),
-            //           directors.map(value => `${value.name}(导演)`).join(' / '),
-            //           casts.map(value => value.name).join(' / '),
-            //           `${year}年(${countries.reduce((previous, current) => `${previous} / ${current}`)})上映`,
-            //         );
-            //       return array.join(' / ');
-            // },
+            rating(){
+                return (this.movie.rating.average/2).toFixed();
+            },
+            infos() {
+                  const { directors, countries, year, genres, casts } = this.movie;
+                  const array = [];
+                  Array.prototype.push
+                    .call(array,
+                      genres.reduce((previous, current) => `${previous} / ${current}`),
+                      directors.map(value => `${value.name}(导演)`).join(' / '),
+                      casts.map(value => value.name).join(' / '),
+                      `${year}年(${countries.reduce((previous, current) => `${previous} / ${current}`)})上映`,
+                    );
+                  return array.join(' / ');
+                }
         },
         methods:{
             wantWatch(){
@@ -85,7 +96,7 @@
             this.id=this.$route.params.id;
             this.$http({
                 method: 'get',
-                url: `api/movie/subject/${this.id}`,
+                url: `api/movie/subject/${this.id}?apikey=0b2bdeda43b5688921839c8ecb20399b`,
                 timeout: 5000,
             }).then((res)=> {
                 this.movie=res.data;
@@ -201,6 +212,20 @@
                     display: block;
                 }
             }
+        }
+        .comments{
+            .title{
+                color: #aaa;
+                margin: 0 0 px2rem(32);;
+                @include font-dpr(30);
+            }
+        }
+        .see-more{
+            display:block;
+            margin:20px 0;
+            text-align:center;
+            @include font-dpr(32);
+            color:#42bd56;
         }
     }
 </style>

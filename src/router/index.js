@@ -8,6 +8,7 @@ import SearchResult from '@/components/search/SearchResult'
 import Book from '@/components/Book'
 import Group from '@/components/Group'
 import Radio from '@/components/Radio'
+import Comments from '@/components/views/Comments'
 import test from '@/components/test'
 
 
@@ -26,6 +27,10 @@ export default new Router({
         path:'/movie-list/:type',
         name:'movie-list',
         component:MovieList
+    },{
+        path:'/movie/:movieId/comments',
+        name:'movie-comments',
+        component:Comments
     },{
         path: '/search',
         name: 'Search',
