@@ -1,16 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Movie from '@/components/movie/Movie'
-import MovieDetail from '@/components/movie/Movie-detail'
-import MovieList from '@/components/movie/Movie-list'
-import Search from '@/components/search/Search'
-import SearchResult from '@/components/search/SearchResult'
-import Book from '@/components/Book'
-import Group from '@/components/Group'
-import Radio from '@/components/Radio'
-import Comments from '@/components/views/Comments'
-import test from '@/components/test'
-
 
 Vue.use(Router)
 
@@ -18,44 +7,41 @@ export default new Router({
     routes: [{
         path: '/movie',
         name: 'Movie',
-        component: Movie
+        component: resolve => require(['@views/Movie'], resolve)
     },{
         path:'/movie/detail/:id',
         name:'movie-detail',
-        component:MovieDetail
+        component:resolve => require(['@views/Movie-detail'], resolve)
     },{
         path:'/movie-list/:type',
         name:'movie-list',
-        component:MovieList
+        component:resolve => require(['@views/Movie-list'], resolve)
     },{
         path:'/movie/:movieId/comments',
         name:'movie-comments',
-        component:Comments
+        component:resolve => require(['@views/Comments'], resolve)
     },{
         path: '/search',
         name: 'Search',
-        component:Search
+        component:resolve => require(['@views/Search'], resolve)
     }, {
         path:'/search-result/:tag',
         name:'search-result',
-        component:SearchResult
+        component:resolve => require(['@views/SearchResult'], resolve)
     },{
         path: '/book',
         name: 'Book',
-        component: Book
+        component: resolve => require(['@views/Book'], resolve)
     }, {
         path: '/radio',
         name: 'Radio',
-        component: Radio
+        component: resolve => require(['@views/Group'], resolve)
     }, {
         path: '/group',
         name: 'Group',
-        component:Group
+        component:resolve => require(['@views/Radio'], resolve)
     },{
         path: '/',
         redirect: '/movie'
-    },{
-        path: '/test',
-        component:test
     }]
 })
