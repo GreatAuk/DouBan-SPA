@@ -22,7 +22,7 @@
   @import './assets/scss/mixin.scss';
 
   .page{
-    padding-top:px2rem(50*2);
+    padding-top:px2rem(110);
   }
   [v-cloak]{
     display:none;

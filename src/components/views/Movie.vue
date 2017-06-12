@@ -9,13 +9,7 @@
             <div class="section-content">
                 <ul class="items">
                     <li v-for="movie in moviesShowing" class="item">
-                        <router-link :to="{name: 'movie-detail', params: {id: movie.id}}">
-                            <div><img v-bind:src="movie.images.large" class="post"/></div>
-                            <div>
-                                <span class="title">{{movie.title}}</span>
-                                <rater v-model.number="movie.rating.average" slot="value" disabled class="rate">{{movie.rating.average}}</rater>
-                            </div>
-                        </router-link>
+                        <movie-card :movie="movie"/>
                     </li>
                 </ul>
             </div>
@@ -28,6 +22,7 @@
             <div class="section-content">
                 <ul class="items">
                     <li v-for="movie in moviesUS" class="item">
+                    <!-- 因为北美票房这个 api，豆瓣做的有点奇葩，就不用 Movie-card 组件了 -->
                         <router-link :to="{name: 'movie-detail', params: { id: movie.subject.id }}">
                             <div >
                                 <img v-bind:src="movie.subject.images.large" class="post"/>
@@ -49,13 +44,7 @@
             <div class="section-content">
                 <ul class="items">
                     <li v-for="movie in moviesNew" class="item">
-                        <router-link :to="{name:'movie-detail',params:{id:movie.id}}">
-                            <div ><img v-bind:src="movie.images.large" class="post"/></div>
-                            <div>
-                                <span class="title">{{movie.title}}</span>
-                                <rater v-model.number="movie.rating.average" slot="value" disabled class="rate">{{movie.rating.average}}</rater>
-                            </div>
-                        </router-link>
+                       <movie-card :movie="movie"/>
                     </li>
                 </ul>
             </div>
@@ -68,8 +57,9 @@
 
 <script>
 import {Spinner,Rater} from 'vux'
-import Header from '@/components/common/Header.vue'
-import Footer from '@/components/common/Footer.vue'
+import MovieCard from '@/components/movie/Movie-card'
+import Header from '@/components/common/Header'
+import Footer from '@/components/common/Footer'
 export default{
     data(){
         return{
@@ -82,6 +72,7 @@ export default{
     components:{
         Spinner,
         Rater,
+        'movie-card':MovieCard,
         'v-header':Header,
         'v-footer':Footer
     },
@@ -113,8 +104,6 @@ export default{
             this.moviesShowing=res1.data.subjects;
             this.moviesUS=res2.data.subjects;
             this.moviesNew=res3.data.subjects;
-          console.log(`child : ${new Date().getTime()}`)
-
             this.loading=false;
         }));
     }
@@ -156,6 +145,7 @@ export default{
                 .item{
                     display:inline-block;
                     width:px2rem(200);
+                    vertical-align:top;
                     margin-right:px2rem(16);
                     text-align:center;
                     &:first-child{
@@ -177,16 +167,24 @@ export default{
                         line-height:px2rem(30);
                         color:rgb(17,17,17);
                         margin-top:px2rem(14);
+                        margin-bottom:px2rem(8);
+                    }
+                    .no-rate{
+                        @include font-dpr(24);
+                        display:inline-block;
+                        margin-top:px2rem(4);
+                        color:#aaa;
                     }
                     .rate{
                         text-align:center;
+                        margin-top:px2rem(14);
                         a{
-                            font-size:20px !important;
+                            font-size:22px !important;
                             [data-dpr="1"] &{
-                                font-size:10px !important;
+                                font-size:11px !important;
                             }
                             [data-dpr="3"] &{
-                                font-size:30px !important;
+                                font-size:33px !important;
                             }
                             width:auto !important;
                             height:auto !important;

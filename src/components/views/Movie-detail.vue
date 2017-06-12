@@ -6,7 +6,7 @@
             <section class="movie-info">
                 <div class="left">
                     <div v-if="movie.rating" class="rating-wrap">
-                        <rater  v-model="rating" slot="value" disabled class="rater"></rater>
+                        <rater  v-if="movie.rating.average" v-model="rating" slot="value" disabled class="rater"></rater>
                         <span>{{movie.rating.average?movie.rating.average:'暂无评价'}}</span>
                         <span>{{movie.ratings_count}}人评价</span>
                     </div>
@@ -235,6 +235,7 @@
             p{
                 @include font-dpr(30);
                 color:#aaa;
+                margin-bottom:px2rem(30);
             }
             ul{
                 overflow-x:auto;

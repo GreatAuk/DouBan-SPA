@@ -6,7 +6,8 @@
                 <router-link :to="{name:'movie-detail',params:{id:(movie.subject?movie.subject:movie).id}}">
                     <div>
                         <transition name="fade">
-                            <img v-show="show" :src="(movie.subject?movie.subject:movie).images.large" class="post">
+                        <x-img v-show="show" :src="(movie.subject?movie.subject:movie).images.large" :default-src="'http://iph.href.lu/300x409?text=Loading'" :offset="100" class="post"></x-img>
+                            <!-- <img v-show="show" :src="(movie.subject?movie.subject:movie).images.large" class="post"> -->
                         </transition>
                     </div>
 
@@ -30,7 +31,7 @@
 <script>
     import Header from '@/components/common/Header.vue'
     import Footer from '@/components/common/Footer.vue'
-    import {Spinner,Rater} from 'vux'
+    import {Spinner,Rater,XImg} from 'vux'
     export default{
         data(){
             return {
@@ -43,6 +44,7 @@
         components:{
             Spinner,
             Rater,
+            XImg,
             'v-header':Header,
             'v-footer':Footer
         },

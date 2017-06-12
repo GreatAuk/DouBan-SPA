@@ -100,5 +100,5 @@ proxyTable: {
 
 ## 第三组件
 
-* [Vux](https://github.com/airyland/vux)  是基于 Vue 和 Weui 开发的手机端页面 UI 组件库(项目中使用的少，但是好在可以按需加载)。
+* [Vux](https://github.com/airyland/vux)  是基于 Vue 和 Weui 开发的手机端页面 UI 组件库(虽然项目中使用的少，但是好在可以按需加载)。
 * [Vue-infinite-loading](https://github.com/PeachScript/vue-infinite-loading) 无限加载。
