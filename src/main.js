@@ -3,7 +3,8 @@
 import Vue from 'vue'
 import FastClick from 'fastclick'
 import App from './App'
-import router from './router/index'
+import router from './router'
+import store from './store'
 import axios from 'axios'
 Vue.prototype.$http=axios
 
@@ -17,5 +18,6 @@ Vue.config.silent = true
 /* eslint-disable no-new */
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app-box')

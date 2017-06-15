@@ -20,7 +20,7 @@
   @import './assets/scss/normalize.scss';
   @import './assets/scss/base.scss';
   @import './assets/scss/mixin.scss';
-
+  @import './assets/scss/vux-reset.scss';
   .page{
     padding-top:px2rem(110);
   }
