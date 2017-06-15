@@ -104,7 +104,7 @@ export default {
 			});
 		}
 	},
-	mounted: function () {  //这里mounted和created生命周期函数区别
+	created: function () {  
 		//跨域请求，在  config 目录 下的 index.js 文件中进行了代理配置(axios 不支持jsonp);
 		this.$http.all([this.getInTheaters(), this.getUS(), this.getComingSoon()])
 			.then(this.$http.spread((res1, res2, res3) => {

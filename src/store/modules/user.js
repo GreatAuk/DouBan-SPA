@@ -7,7 +7,7 @@ export default {
     userInfo:JSON.parse(sessionStorage.getItem('user')) || {},
   },
   mutations: {
-    [types.LOGIN](state,rootState, user) {
+    [types.LOGIN](state, user) {
       sessionStorage.setItem('user', JSON.stringify(user));
       Object.assign(state, user);
       state.loginStatus=true;
@@ -18,7 +18,7 @@ export default {
     [types.USER_SIGNOUT](state) {
         sessionStorage.removeItem('user')
         Object.keys(state).forEach(k => Vue.delete(state, k))
-    }
+    },
   },
   actions: {
     [types.LOGIN]({commit}, data) {

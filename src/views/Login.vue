@@ -55,6 +55,9 @@ export default {
 					this.toast.text=err;
 					this.toast.time=2500;
 			})
+		},
+		say(val){
+			this.alert(val);
 		}
 	}
 }
