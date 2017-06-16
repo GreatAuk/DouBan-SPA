@@ -4,13 +4,13 @@
 
 ## 预览
 
-![](http://om4os5jmv.bkt.clouddn.com/review1.gif)![](http://om4os5jmv.bkt.clouddn.com/review2.gif)
+![](https://github.com/GreatAuk/DouBan-SPA/raw/master/review1.gif)  ![](https://github.com/GreatAuk/DouBan-SPA/raw/master/review2.gif)
 
 ------
 
 
 
-![](http://om4os5jmv.bkt.clouddn.com/review3.gif)![](http://om4os5jmv.bkt.clouddn.com/review4.gif)
+![](https://github.com/GreatAuk/DouBan-SPA/raw/master/review3.gif)  ![](https://github.com/GreatAuk/DouBan-SPA/raw/master/review4.gif)
 
 ## Build Setup
 

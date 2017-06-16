@@ -36,6 +36,7 @@
           </li>
         </ul>
       </section>
+  
       <section class="photos-videos">
         <p>{{ movie.title }}的预告片和图片({{ movie.photos_count }})</p>
         <ul>
@@ -45,9 +46,9 @@
               <img :src="item.medium" alt="预告片图片" class="photo" />
             </a>
           </li>
-          <li v-for="item in movie.photos">
+          <li v-for="(item,index) in movie.casts">
             <a href="javascript:;">
-              <img :src="`${item.cover}`" class="photo" alt="403 forbidden">
+              <img  :src="item.avatars.large" class="photo" alt="403 forbidden">
             </a>
           </li>
         </ul>
@@ -58,7 +59,7 @@
         <router-link class="see-more" :to="{name:'movie-comments',params:{movieId:movie.id}}">查看全部短评</router-link>
       </section>
     </div>
-    <toast v-model="toastShow" text="请先登录" width="40%" type="text"></toast>
+    <toast v-model="toastShow" width="40%" type="text">{{toastText}}</toast>
     <spinner v-show="loading" :type="'lines'" class="loading"></spinner>
     <v-footer v-show="!loading" />
   </div>
@@ -76,6 +77,7 @@ export default {
       movie: null,
       test: '',
       toastShow: false,
+      toastText: '',
     }
   },
   components: {
@@ -110,22 +112,26 @@ export default {
     wantWatch() {
       if (!this.loginStatus) {
         this.toastShow = true;
+        this.toastText = "请先登录";
         setTimeout(() => {
           this.$router.push({ name: 'Login' });
         }, 2000);
         return;
       }
-      alert("我也想看啊！");
+      this.toastText = "我也想看啊！";
+      this.toastShow = true;
     },
     Watched() {
       if (!this.loginStatus) {
+        this.toastText = "请先登录";
         this.toastShow = true;
         setTimeout(() => {
           this.$router.push({ name: 'Login' });
         }, 2000);
         return;
       }
-      alert('我已经看过了');
+      this.toastText = "我已经看过了";
+      this.toastShow = true;
     }
   },
   mounted() {

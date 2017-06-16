@@ -3,8 +3,8 @@ import * as types from "./../mutation-types"
 
 export default {
   state: {
-    loginStatus:false,
     userInfo:JSON.parse(sessionStorage.getItem('user')) || {},
+    loginStatus:Boolean(sessionStorage.getItem('user')),
   },
   mutations: {
     [types.LOGIN](state, user) {

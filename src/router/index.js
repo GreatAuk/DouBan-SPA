@@ -13,6 +13,10 @@ export default new Router({
     path: '/movie/detail/:id',
     name: 'movie-detail',
     component: resolve => require(['@views/Movie-detail'], resolve),
+    beforeEnter: (to, before, next)=>{
+      // document.title='Hello World';
+      next();
+    }
   }, {
     path: '/movie-list/:type',
     name: 'movie-list',

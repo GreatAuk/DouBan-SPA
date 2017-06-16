@@ -48,7 +48,8 @@ export default {
         this.toast.show = true;
         this.toast.text = '登录成功，3秒后跳转';
         setTimeout(() => {
-          this.$router.go(-1)
+          // this.$router.go(-1)
+          this.$router.push('/movie')
         }, 3000);
       }).catch((err) => {
         this.toast.show = true;

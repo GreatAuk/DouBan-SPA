@@ -21,14 +21,15 @@
         </popover>
       </div>
     </div>
-    <alert v-model="show" :content="alertMessage"></alert>
+    <toast v-model="toastShow" text="请先登录" width="40%" type="text"></toast>
   </div>
 </template>
 
 <script>
-import { Rater, Popover, Alert } from 'vux'
+import { Rater, Popover, Toast } from 'vux'
 import like from '@/assets/image/ic_like_gray.svg'
 import liked from '@/assets/image/ic_like_green.svg'
+import {mapState} from 'vuex'
 
 export default {
   data() {
@@ -36,7 +37,7 @@ export default {
       likeType: like,
       likeCount: this.comment.useful_count,
       likeCountColor: '#ccc',
-      show: false,
+      toastShow: false,
       alertMessage: ''
     }
   },
@@ -48,7 +49,7 @@ export default {
   components: {
     Rater,
     Popover,
-    Alert
+    Toast
   },
   created() {
     if (!window.localStorage.movieLike) {
@@ -62,10 +63,22 @@ export default {
       this.count = this.count + 1;
     }
   },
+  computed:{
+    ...mapState({
+      loginStatus:state=>state.user.loginStatus,
+    })
+  },
   methods: {
     like() {
       // 用 localStorage 模拟点赞
       const storage = JSON.parse(window.localStorage.movieLike);
+      if(!this.loginStatus){
+        this.toastShow=true;
+        setTimeout(()=> {
+          this.$router.push({name:'Login'});
+        }, 2000);
+        return;
+      };
       if (storage[this.comment.id]) {
         this.alertMessage = '不能再点了 -_-'
         this.show = true;

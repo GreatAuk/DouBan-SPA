@@ -6,6 +6,7 @@ import App from './App'
 import router from './router'
 import store from './store'
 import axios from 'axios'
+
 Vue.prototype.$http=axios
 
 // 添加Fastclick移除移动端点击延迟

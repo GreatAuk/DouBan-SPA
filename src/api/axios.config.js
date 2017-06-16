@@ -1,6 +1,5 @@
 import axios from 'axios'
 import qs from 'qs'
-// import * as _ from '../util/tool'
 
 //最长响应时间
 axios.defaults.timeout = 10000;
@@ -16,7 +15,6 @@ axios.interceptors.request.use((config) => {
   }
   return config;
 },(error) =>{
-    _.toast("错误的传参", 'fail');
   return Promise.reject(error);
 });
 
@@ -24,12 +22,10 @@ axios.interceptors.request.use((config) => {
 axios.interceptors.response.use((res) =>{
   //对响应数据做些事
     if(!res.data.success){
-        // _.toast(res.data);
         return Promise.reject(res);
     }
     return res;
 }, (error) => {
-    _.toast("网络异常", 'fail');
     return Promise.reject(error);
 });
 
