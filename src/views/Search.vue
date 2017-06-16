@@ -1,18 +1,18 @@
 <template>
-	<div class="search-page">
-		<SearchInput/>
-		<Tag/>
-	</div>
+  <div class="search-page">
+    <SearchInput/>
+    <Tag/>
+  </div>
 </template>
 
 <script>
 import SearchInput from '@/components/search/SearchInput.vue'
 import Tag from '@/components/search/Tag.vue'
 export default {
-	components: {
-		SearchInput,
-		Tag
-	}
+  components: {
+    SearchInput,
+    Tag
+  }
 }
 </script>
 

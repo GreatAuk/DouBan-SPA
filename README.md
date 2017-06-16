@@ -1,6 +1,6 @@
 # DouBan-SPA
 
-> The douban application built with vue + vux-cli + vue-router + axios + vux + es6
+> The douban application built with vue ++ vux + vux-cli + + es6 + vue-router + axios 
 
 
 
@@ -15,7 +15,61 @@ npm run dev
 
 # build for production with minification
 npm run build
+```
 
+## 项目文件结构
+
+```
+├── App.vue
+├── api
+│   └── axios.config.js
+├── assets							当前项目所有静态文件	
+│   ├── image
+│   └── scss
+│       ├── base.scss
+│       ├── helper.scss
+│       ├── layouts.scss
+│       ├── normalize.scss
+│       ├── styles.scss
+│       ├── variables.scss
+│       └── vux-reset.scss
+├── components						当前项目所有组件
+│   ├── common
+│   │   ├── Back-top.vue
+│   │   ├── Footer.vue
+│   │   └── Header.vue
+│   ├── movie
+│   │   ├── Comment-item.vue
+│   │   └── Movie-card.vue
+│   └── search
+│       ├── ResultItem.vue
+│       ├── Search.vue
+│       ├── SearchInput.vue
+│       ├── SearchResult.vue
+│       └── Tag.vue
+├── main.js
+├── router
+│   └── index.js
+├── store
+│   ├── actions.js
+│   ├── index.js
+│   ├── modules
+│   │   ├── movie.js
+│   │   └── user.js
+│   ├── mutation-types.js
+│   └── mutations.js
+└── views
+    ├── Book.vue
+    ├── Comments.vue
+    ├── Group.vue
+    ├── Login.vue
+    ├── Movie-detail.vue
+    ├── Movie-list.vue
+    ├── Movie.vue
+    ├── Radio.vue
+    ├── Register.vue
+    ├── Search.vue
+    └── SearchResult.vue
 ```
 
 
@@ -68,7 +122,6 @@ export default new Router({
         redirect: '/movie'
     }]
 })
-
 ```
 > 其中『@views 』是配置的别名（`resolve.alias`）
 

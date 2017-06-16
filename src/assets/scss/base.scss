@@ -1,22 +1,63 @@
-  *{
-    box-sizing:border-box;
-  }
-  body{
-    font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
-  }
-  ul,li{
-    margin:0;
-    padding:0;
-    list-style:none;
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+  body {
+    font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
   }
   a{
-    text-decoration:none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-tap-highlight-color: transparent;
+    text-decoration:none !important;
   }
-  .clearfix:after{
-    content:"";
-    display:table;
-    clear:both;
-    visibility:hidden;
+  a,
+  button,
+  input,
+  textarea {
+    text-decoration: none; //	去除点击一个链接出现的边框或者半透明灰色遮罩
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  } //  在iOS上，输入框默认有内部阴影，但无法使用 box-shadow 来清除
+  input,
+  textarea {
+    border: 0; // 方法1
+    -webkit-appearance: none; //方法2
+  } //	webkit表单元素的默认外观重置
+  .css-reset {
+    -webkit-appearance: none;
+  } // Resets margins and paddings for headers, ul, ol and p
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  ul,
+  li,
+  p,
+  blockquote {
+    margin: 0;
+    padding: 0;
+  }
+
+  // Completely resets form items
+  // ----------------------------
+  // Super hard reset that removes all borders
+  // and radius of all form items.
+  // ============================
+  input,
+  textarea,
+  button {
+    border: 0;
+    border-radius: 0;
+    outline: none;
+    appearance: none;
+    &:hover,
+    &:active,
+    &:focus {
+      outline: none;
+    }
   }

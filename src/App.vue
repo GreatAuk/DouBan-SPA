@@ -4,26 +4,27 @@
       <router-view v-if="$route.meta.keepAlive"></router-view>
     </keep-alive>
     <router-view v-if="!$route.meta.keepAlive"></router-view>
+    <back-top/>
   </div>
 </template>
 
 <script>
-
+  import BackTop from "@/components/common/Back-top"
   export default {
     data(){
       return{
         loading:true
       }
     },
+    components:{
+      'back-top':BackTop
+    },
     name:'app',
   }
 </script>
 
 <style lang="scss">
-  @import './assets/scss/normalize.scss';
-  @import './assets/scss/base.scss';
-  @import './assets/scss/mixin.scss';
-  @import './assets/scss/vux-reset.scss';
+  @import './assets/scss/styles.scss';
   .page{
     padding-top:px2rem(110);
   }
@@ -42,35 +43,4 @@
       height:px2rem(100) !important;
     }
   }
-
-    /* Popover Start*/
-  .vux-popover{
-    background-color:transparent !important;
-  }
-    /* Popover End*/
-
-  /* Rater Start*/
-  .rater{
-      a{
-          font-size:20px !important;
-          [data-dpr="1"] &{
-              font-size:10px !important;
-          }
-          [data-dpr="3"] &{
-              font-size:30px !important;
-          }
-          width:auto !important;
-          height:auto !important;
-          }
-  }
-
-  /* Alert Start*/
-  .weui-dialog__ft{
-    @include font-dpr(30);
-  }
-  .weui-dialog__bd{
-    @include font-dpr(28);
-  }
-  /* Alert End*/
-
 </style>

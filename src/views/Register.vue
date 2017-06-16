@@ -18,91 +18,91 @@
 </template>
 
 <script>
-import { XInput, Group,Toast } from 'vux'
+import { XInput, Group, Toast } from 'vux'
 export default {
-	data(){
-		return{
-			form:{
-				account:'',
-				pwd:'',
-				name:''
-			},
-			toast:{
-				text:'',
-				show:false,
-			}
-		}
-	},
-	components: {
-		'x-input': XInput,
-		Group,
-		Toast
-	},
-	methods: {
-		register() {
-			if(!this.form.account||!this.form.pwd||!this.form.name){
-				return;
-			}
-			this.$store.dispatch({
-				type:'REGISTER',
-				user:this.form
-			}).then((text)=>{
-				this.toast.text=text;
-				this.toast.show=true;
-				setTimeout(()=>{
-					this.$router.push({name:'Login'})
-				},3000);
-			}).catch((err)=>{
-				this.toast.text=err;
-				this.toast.show=true;
-			});
-		}
-	}
+  data() {
+    return {
+      form: {
+        account: '',
+        pwd: '',
+        name: ''
+      },
+      toast: {
+        text: '',
+        show: false,
+      }
+    }
+  },
+  components: {
+    'x-input': XInput,
+    Group,
+    Toast
+  },
+  methods: {
+    register() {
+      if (!this.form.account || !this.form.pwd || !this.form.name) {
+        return;
+      }
+      this.$store.dispatch({
+        type: 'REGISTER',
+        user: this.form
+      }).then((text) => {
+        this.toast.text = text;
+        this.toast.show = true;
+        setTimeout(() => {
+          this.$router.push({ name: 'Login' })
+        }, 3000);
+      }).catch((err) => {
+        this.toast.text = err;
+        this.toast.show = true;
+      });
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/scss/mixin.scss';
+@import '../assets/scss/helper.scss';
 .welcome {
-	color: #42bd56;
-	@include font-dpr(80);
-	margin: px2rem(100) auto;
-	font-weight: 300;
-	text-align: center;
+  color: #42bd56;
+  @include font-dpr(80);
+  margin: px2rem(100) auto;
+  font-weight: 300;
+  text-align: center;
 }
 
 form {
-	@include font-dpr(30);
-	padding: 0 px2rem(50);
-	.input-wrap{
-		border:1px solid #d7d7d7;
-		border-top:0;
-		overflow:hidden;
-		&:first-child{
-			border-top:1px solid #d7d7d7;
-			border-top-left-radius:px2rem(6);
-			border-top-right-radius:px2rem(6);
-		}
-		&:last-child{
-			border-top:1px solid #d7d7d7;
-			border-bottom-left-radius:px2rem(6);
-			border-bottom-right-radius:px2rem(6);
-		}
-		.vux-x-input{
-			height:px2rem(90);
-		}
-	}
-	.submit {
-		@include font-dpr(32);
-		border-radius: px2rem(6);
-		margin-top:px2rem(20);
-		border: 0 none;
-		background: #42bd56;
-		display: block;
-		width: 100%;
-		height: px2rem(88);
-		color: #fff;
-		transition: all 0.3s ease-out;
-	}
+  @include font-dpr(30);
+  padding: 0 px2rem(50);
+  .input-wrap {
+    border: 1px solid #d7d7d7;
+    border-top: 0;
+    overflow: hidden;
+    &:first-child {
+      border-top: 1px solid #d7d7d7;
+      border-top-left-radius: px2rem(6);
+      border-top-right-radius: px2rem(6);
+    }
+    &:last-child {
+      border-top: 1px solid #d7d7d7;
+      border-bottom-left-radius: px2rem(6);
+      border-bottom-right-radius: px2rem(6);
+    }
+    .vux-x-input {
+      height: px2rem(90);
+    }
+  }
+  .submit {
+    @include font-dpr(32);
+    border-radius: px2rem(6);
+    margin-top: px2rem(20);
+    border: 0 none;
+    background: #42bd56;
+    display: block;
+    width: 100%;
+    height: px2rem(88);
+    color: #fff;
+    transition: all 0.3s ease-out;
+  }
 }
 </style>

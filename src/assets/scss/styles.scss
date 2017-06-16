@@ -1,0 +1,17 @@
+// Reset and base files
+@import "./base.scss";
+
+// Sass mixin or function files
+@import "./helper.scss";
+
+// Css reset files
+@import "./normalize.scss";
+
+// Variables files(such as color , theme)
+@import "./variables.scss";
+
+// Vue css reset files
+@import "./vux-reset.scss";
+
+// Layouts css files
+@import "./layouts.scss";

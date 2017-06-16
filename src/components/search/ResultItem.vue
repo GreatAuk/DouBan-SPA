@@ -39,7 +39,7 @@
 </script>
 
 <style lang="scss">
-    @import '../../assets/scss/mixin.scss';
+    @import '../../assets/scss/helper.scss';
 
     .result-item{
         display:block;

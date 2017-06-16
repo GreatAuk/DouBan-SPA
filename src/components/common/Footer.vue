@@ -2,7 +2,7 @@
   <footer>
     <router-link to="/">
       <div class="douban-footer">
-        <img src="../../assets/doubanLogo.png" alt="豆瓣logo">
+        <img src="../../assets/image/doubanLogo.png" alt="豆瓣logo">
         <div class="info-content">
           <strong>豆瓣</strong>
           <div>我们的精神部落</div>
