@@ -1,6 +1,6 @@
 # DouBan-SPA
 
-> The douban application built with vue ++ vux + vux-cli + + es6 + vue-router + axios 
+> The douban application built with vue + vuex + es6 + vux-cli + vue-router + axios + vux
 
 ## 预览
 
