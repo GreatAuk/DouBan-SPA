@@ -12,7 +12,7 @@ Vue.prototype.$http=axios
 // 添加Fastclick移除移动端点击延迟
 FastClick.attach(document.body)
 
-//关闭生产模式下给出的提示
+//设置为 false 以阻止 vue 在启动时生成生产提示。
 Vue.config.productionTip = false
 Vue.config.silent = true
 

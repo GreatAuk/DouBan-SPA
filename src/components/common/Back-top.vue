@@ -71,7 +71,6 @@ export default {
 $color: #42bd56;
 $speed: 1.5s;
 
-// @import url(https://fonts.googleapis.com/css?family=Lato:700);
 .arrow {
   bottom:px2rem(20);
   right:px2rem(20);
